@@ -8,9 +8,11 @@ package:
 source:
   url: https://github.com/ANTsX/ANTs/archive/v{{ version }}.tar.gz
   sha256: 3a872ae60f00665c7b77b5d3727b1f9e5edaf33fe96024abb3289cee917e11d6
+  patches:
+    - 0001-Remove-ANTSPATH.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
