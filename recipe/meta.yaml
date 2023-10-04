@@ -10,7 +10,7 @@ source:
   sha256: 326efda09608a19752e802acc46ed808a4fdb62765f11a4f26402a5aa8bc70ac
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
 
 requirements:
@@ -19,7 +19,7 @@ requirements:
     - cmake >=3.16.3
     - ninja
   host:
-    - boost-cpp
+    - libboost-headers
     - libitk-devel
   run:
     - libitk

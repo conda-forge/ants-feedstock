@@ -28,6 +28,6 @@ cmake --build . --parallel ${CPU_COUNT}
 cmake --build . --parallel ${CPU_COUNT} --target install
 
 # Test
-if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 ctest --parallel ${CPU_COUNT} --extra-verbose --output-on-failure
 fi
