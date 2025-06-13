@@ -11,6 +11,7 @@ cmake -G Ninja ^
     -DBUILD_SHARED_LIBS:BOOL=ON ^
     -DANTS_SUPERBUILD:BOOL=OFF ^
     -DUSE_SYSTEM_ITK:BOOL=ON ^
+    -DCMAKE_BUILD_TYPE:STRING=Release ^
     %SRC_DIR%
 if errorlevel 1 exit 1
 
