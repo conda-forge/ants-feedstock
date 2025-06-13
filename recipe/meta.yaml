@@ -11,6 +11,16 @@ source:
 
 build:
   number: 1
+  script:
+    - mkdir build
+    - cd build
+    # For Unix (not win)
+    - cmake -G Ninja ${CMAKE_ARGS} -DANTS_SUPERBUILD:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_LIBDIR:STRING=lib -DCMAKE_INSTALL_PREFIX:STRING=${PREFIX} -DCMAKE_PREFIX_PATH:STRING=${PREFIX} -DRUN_SHORT_TESTS:BOOL=ON -DRUN_LONG_TESTS:BOOL=OFF -DUSE_SYSTEM_ITK:BOOL=ON ${SRC_DIR}  # [not win]
+    - cmake --build . --parallel ${CPU_COUNT} --target install  # [not win]
+    - if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then ctest --parallel ${CPU_COUNT} --extra-verbose --output-on-failure; fi  # [not win]
+    # For Windows (win)
+    - cmake -G Ninja %CMAKE_ARGS% -DCMAKE_INSTALL_LIBDIR:STRING=%LIBRARY_LIB% -DCMAKE_INSTALL_PREFIX:STRING=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH:STRING=%LIBRARY_PREFIX% -DBUILD_SHARED_LIBS:BOOL=ON -DANTS_SUPERBUILD:BOOL=OFF -DUSE_SYSTEM_ITK:BOOL=ON -DCMAKE_BUILD_TYPE:STRING=Release %SRC_DIR%  # [win]
+    - cmake --build . --config Release --parallel %CPU_COUNT% --target install  # [win]
 
 requirements:
   build:
