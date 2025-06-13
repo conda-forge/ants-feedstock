@@ -3,7 +3,7 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
-cmake -G Ninja ^
+cmake ^
     %CMAKE_ARGS% ^
     -DCMAKE_INSTALL_LIBDIR:STRING=%LIBRARY_LIB% ^
     -DCMAKE_INSTALL_PREFIX:STRING=%LIBRARY_PREFIX% ^
