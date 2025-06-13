@@ -14,5 +14,5 @@ cmake -G Ninja ^
     %SRC_DIR%
 if errorlevel 1 exit 1
 
-cmake --build . --config RelWithDebInfo --parallel %CPU_COUNT% --target install
+cmake --build . --config Release --parallel %CPU_COUNT% --target install
 if errorlevel 1 exit 1
