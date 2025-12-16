@@ -1,5 +1,5 @@
 {% set name = "ANTs" %}
-{% set version = "2.6.3" %}
+{% set version = "2.6.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/ANTsX/ANTs/archive/v{{ version }}.tar.gz
-  sha256: 9e8bf4e6e336c2a8aa6e38159258549a92810e605b135599ea760970f4919438
+  sha256: 101b674d37bd08c69de0d4aeaf5cd57d7f875e96d1845fb0abf80d2115b342c7
 
 build:
   number: 0
